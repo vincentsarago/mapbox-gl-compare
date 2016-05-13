@@ -21,8 +21,9 @@ function Compare(a, b) {
   this._syncMaps(a, b);
 
   b.on('resize', function() {
+    var ratio = this._bounds.width / b.getContainer().getBoundingClientRect().width;
     this._bounds = b.getContainer().getBoundingClientRect();
-    if (this._x) this._setPosition(this._x);
+    if (this._x) this._setPosition(this._x / ratio);
   }.bind(this));
 }
 
